@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf lib/*",
-    "format": "./node_modules/.bin/prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "format": "./node_modules/.bin/prettier --write \"src/**/*.ts\"",
     "test": "./node_modules/.bin/jest",
     "coverage": "./node_modules/.bin/jest --coverage",
     "storybook": "storybook dev -p 6006",
