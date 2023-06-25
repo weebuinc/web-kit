@@ -4,7 +4,7 @@
   "description": "Weebu Web Utility Kit",
   "main": "lib/index",
   "types": "index",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf lib/*",
@@ -15,7 +15,7 @@
     "storybook:build": "storybook build -o docs-build",
     "preversion": "npm run clean && npm run format && npm test",
     "version": "npm run build && git add .",
-    "postversion": "git push && git push --tags && npm publish --access private",
+    "postversion": "git push && git push --tags && npm publish --access public",
     "patch": "npm version patch -m \"[PATCH] version (%s)\"",
     "minor": "npm version minor -m \"[MINOR] version (%s)\"",
     "major": "npm version major -m \"[MAJOR] version (%s)\""
