@@ -64,13 +64,15 @@ class Argumenter {
   }
   private screenArray(type: string, arg: any, arrayed: boolean) {
     if (type === 'object') {
-      if (Array.isArray(arg)) {
-        return arrayed;
-      } else {
-        return !arrayed;
-      }
+      return Array.isArray(arg) ? arrayed : !arrayed;
     }
 
+    return true;
+  }
+  private screenNull(type: string, arg: any, nulled: boolean) {
+    if (type === 'object') {
+      return arg === null ? nulled : !nulled;
+    }
     return true;
   }
 
@@ -79,14 +81,20 @@ class Argumenter {
     let result;
     let remove = -1;
     let arrayed = false;
+    let nulled = false;
 
     if (type === 'array') {
       type = 'object';
       arrayed = true;
     }
+
+    if (type === 'null') {
+      type = 'object';
+      nulled = true;
+    }
     for (let i = 0; i < args.length; i++) {
       let arg = args[i];
-      if (typeof arg === type && this.screenArray(type, arg, arrayed)) {
+      if (typeof arg === type && this.screenArray(type, arg, arrayed) && this.screenNull(type, arg, nulled)) {
         result = arg;
         remove = i;
         break;
