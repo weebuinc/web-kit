@@ -99,6 +99,11 @@ class Argumenter {
   }
 }
 
+/**
+ * This function converts function arguments into an Argumenter object that allows the arguments to be accessed by type.
+ * @param { Array<any> } args the arguments to parse with the Argumenter
+ * @returns { Argumenter } an object that allows access to the arguments by type
+ */
 export function argumenter(...args) {
   return new Argumenter(args);
 }

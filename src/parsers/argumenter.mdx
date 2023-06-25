@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='documentation/parsers/argumenter' />
+
+# Argumenter
+
+The `argumenter` is a function that can take parameters, in any order, and returns a class that parses the values by type.
+
+## Overloading
+
+[Typescript](https://www.typescriptlang.org/) introduced the capability to represent functions as overloads (see example below).
+
+```typescript
+function printPerson(name: string, age: number): void;
+function printPerson(age: number, name: string): void;
+function printPerson(a: any, b: any) {
+  let name: string;
+  let age: number;
+
+  if (typeof a === 'string') {
+    name = a;
+  } else {
+    age = b;
+  }
+
+  if (typeof b === 'string') {
+    name = a;
+  } else {
+    age = b;
+  }
+  console.log({ name, age });
+}
+```
+
+Here is an example using the argumenter to support overloads
+
+```typescript
+import { argumenter } from '@weebu/web-kit';
+
+function printPerson(name: string, age: number): void;
+function printPerson(age: number, name: string): void;
+function printPerson(...args) {
+  const a = argumenter(...args);
+  const name = a.string;
+  const age = a.number;
+  console.log({ name, age });
+}
+```

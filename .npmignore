@@ -1,0 +1,9 @@
+npm-debug.log
+
+.coverage/
+.vscode/
+.storybook/
+.github/
+docs/
+docs-build/
+stories/

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "dynamicImport": false,
+      "decorators": true,
+      "dts": true
+    },
+    "transform": {
+      "decoratorMetadata": true,
+      "legacyDecorator": true
+    },
+    "target": "es5",
+    "loose": true,
+    "externalHelpers": true
+  },
+  "exclude": [".*\\.js$", ".*\\.spec.ts$"],
+  "minify": true,
+  "sourceMaps": false
+}

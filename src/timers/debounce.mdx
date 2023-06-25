@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='documentation/timers/debounce' />
+
+# Debounce
+
+The `debounce` function accepts a callback and returns a dispatch that debounces the callback.
+
+## Signature
+
+### Definitions
+
+```typescript
+type DebounceCallback = (...args) => Awaited<any>;
+type DebounceDispatch<C extends DebounceCallback> = (...params: Parameters<C>) => Awaited<void>;
+
+export function debounce<C extends DebounceCallback>(cb: C): DebounceDispatch<C>;
+export function debounce<C extends DebounceCallback>(cb: C, timeout: number): DebounceDispatch<C>;
+```
+
+### Parameters
+
+<table style={{ textAlign: 'left' }}>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>cb</td>
+      <td>`function`</td>
+      <td>The callback function that will be debounced by the returned dispatch.</td>
+    </tr>
+    <tr>
+      <td>timeout</td>
+      <td>`number`</td>
+      <td>
+        The period to wait for between the time the dispatch is called and the callback is called. (**default:** `300`)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+## Examples
+
+### Basic Counter
+
+This example illustrates that subsequent calls of the dispatch will only result in one invocation of the callback.
+The `debounce` sets a
+
+```typescript
+import { debounce, wait } from '@weebu/web-kit';
+(async () => {
+  let i = 0;
+  const disptach = debounce(() => {
+    i++;
+  });
+
+  dispatch();
+  dispatch();
+  dispatch();
+  dispatch();
+
+  await wait();
+
+  console.info(i); // 1 is printed since the callback happens a short time later after the last dispatch is called.
+})();
+```
