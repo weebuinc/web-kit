@@ -25,7 +25,7 @@ export function debounce<C extends DebounceCallback>(cb: C, timeout: number): De
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Comment</th>
+      <th style={{ width: '100%' }}>Comment</th>
     </tr>
   </thead>
   <tbody>
@@ -53,7 +53,7 @@ This example illustrates that subsequent calls of the dispatch will only result 
 The `debounce` sets a
 
 ```typescript
-import { debounce, wait } from '@weebu/web-kit';
+import { debounce, wait } from '@weebuinc/web-kit';
 (async () => {
   let i = 0;
   const disptach = debounce(() => {

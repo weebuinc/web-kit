@@ -1,12 +1,13 @@
-import { TimeUnit } from '../types';
-import { epoch } from './epoch';
+import { TimeUnit } from '../../types';
+import { epoch } from '../epoch';
 
+type Lap = (unit?: TimeUnit) => number;
 /**
  * This function returns another function that calculates the lapse period of time in-between its subsequent calls
  * @param unit the unit of time used to represent the lapsed period
  * @example
  * ```typescript
- * import { lapse, wait } from '@weebu/web-kit';
+ * import { lapse, wait } from '@weebuinc/web-kit';
  *
  * const lap = lapse();
  * await wait(5000);
@@ -16,7 +17,7 @@ import { epoch } from './epoch';
  * lap() // returns 1200
  * ```
  */
-export function lapse(unit: TimeUnit = 'ms'): (unit?: TimeUnit) => number {
+export function lapse(unit: TimeUnit = 'ms'): Lap {
   const state = { milliseconds: epoch() };
   return (u: TimeUnit = unit) => {
     const { milliseconds } = state;

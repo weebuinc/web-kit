@@ -6,7 +6,29 @@ import { Meta } from '@storybook/blocks';
 
 The `argumenter` is a function that can take parameters, in any order, and returns a class that parses the values by type.
 
-## Overloading
+## Signature
+
+### Definitions
+
+```typescript
+interface Argumenter {
+  array: Array<any>;
+  boolean: boolean;
+  function: Function;
+  instance<T>(type: { new (...args): T } | (Function & { prototype: T })): T;
+  nil: null;
+  null: null;
+  number: number;
+  object: Object;
+  string: string;
+  symbol: symbol;
+}
+function argumenter(...args): Argumenter;
+```
+
+## Examples
+
+### Overloading
 
 [Typescript](https://www.typescriptlang.org/) introduced the capability to represent functions as overloads (see example below).
 
@@ -35,7 +57,7 @@ function printPerson(a: any, b: any) {
 Here is an example using the argumenter to support overloads
 
 ```typescript
-import { argumenter } from '@weebu/web-kit';
+import { argumenter } from '@weebuinc/web-kit';
 
 function printPerson(name: string, age: number): void;
 function printPerson(age: number, name: string): void;

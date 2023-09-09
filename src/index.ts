@@ -1,4 +1,4 @@
 export * from './parsers';
-export * from './resolvers';
+export * from './reducers';
 export * from './timers';
 export * from './types';

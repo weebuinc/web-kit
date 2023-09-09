@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='documentation/timers/wait' />
+
+# Wait
+
+The `wait` function resolves a void promise after a specified period of time.
+
+<br />
+
+## Signature
+
+### Definitions
+
+```typescript
+export function wait(): Promise<void>;
+export function wait(milliseconds: number): Promise<void>;
+```
+
+### Parameters
+
+<table style={{ textAlign: 'left' }}>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th style={{ width: '100%' }}>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>milliseconds</td>
+      <td>`number`</td>
+      <td>The period (in milliseconds) that will be awaited before the function resolves. (default: 1000)</td>
+    </tr>
+  </tbody>
+</table>

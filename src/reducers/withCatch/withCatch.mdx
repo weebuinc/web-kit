@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='documentation/reducers/withCatch' />
+
+# WithCatch
+
+The `withCatch` function wraps a callback code block and returns an object containing either the returned value of the callback or the error thrown by it.
+
+This function provides the following advantages:
+
+- It helps to clean up code by removing the need of try/catch blocks.
+- It allows the returned error to be casted to any type.
+- It can run code while ignoring errors.
+
+<br />
+
+## Signature
+
+### Definitions
+
+```typescript
+interface WithCatchReturn<E, R> {
+  result?: R;
+  error?: E;
+}
+
+export function withCatch<E = Error, R = any>(cb: () => R): WithCatchReturn<E, R>;
+export function withCatch<E = Error, R = any>(cb: () => Promise<R>): Promise<WithCatchReturn<E, R>>;
+```
+
+<br />
+
+## Examples
+
+### Casting Error
+
+```typescript
+import axios, { AxiosError } from 'axios';
+const { result, error } = withCatch<AxiosError>(async () => {
+  const resp = await axios.get('http://example.com');
+  return resp.data;
+});
+error && console.error(error.response.status);
+```

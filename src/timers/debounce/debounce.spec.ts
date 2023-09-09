@@ -1,5 +1,5 @@
 import { debounce } from './debounce';
-import { wait } from './wait';
+import { wait } from '../wait';
 
 describe('debounce unit tests', () => {
   it('call debounce callback once after multiple dispatch calls', async () => {
