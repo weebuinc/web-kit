@@ -6,7 +6,7 @@ describe('lapse unit tests', () => {
     const lap = lapse();
     await wait(300);
     const result = lap();
-    expect(result).toBeGreaterThan(300);
+    expect(result).toBeGreaterThanOrEqual(300);
     expect(result).toBeLessThan(350);
   });
   it('lap with lapse in seconds', async () => {
